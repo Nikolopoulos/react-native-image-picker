@@ -189,8 +189,10 @@ NSData* extractImageData(UIImage* image){
     NSString *fileName = (resources.count > 0) ? [(PHAssetResource*)resources.firstObject originalFilename] : nil;
     if(fileName == nil){
         fileName = [self getImageFileName:fileType];
+        NSLog(@"filename is nil so I got: %@", name);
+    } else {
+        NSLog(@"filename is NOT nil so I got: %@", name);
     }
-    //NSLog(@"%i: %@", i, name);
 
 /*ending papatza*/
 
