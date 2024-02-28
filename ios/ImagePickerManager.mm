@@ -182,7 +182,20 @@ NSData* extractImageData(UIImage* image){
     NSMutableDictionary *asset = [[NSMutableDictionary alloc] init];
     asset[@"type"] = [@"image/" stringByAppendingString:fileType];
 
-    NSString *fileName = [self getImageFileName:fileType];
+
+/*starting papatza*/
+
+    NSArray *resources = [PHAssetResource assetResourcesForAsset:phAsset];
+    NSString *fileName = (resources.count > 0) ? [(PHAssetResource*)resources.firstObject originalFilename] : nil;
+    if(fileName == nil){
+        *fileName = [self getImageFileName:fileType];
+    }
+    //NSLog(@"%i: %@", i, name);
+
+/*ending papatza*/
+
+
+    //NSString *fileName = [][self getImageFileName:fileType];
     NSString *path = [[NSTemporaryDirectory() stringByStandardizingPath] stringByAppendingPathComponent:fileName];
     [data writeToFile:path atomically:YES];
 
