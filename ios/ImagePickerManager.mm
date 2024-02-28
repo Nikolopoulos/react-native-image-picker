@@ -188,7 +188,7 @@ NSData* extractImageData(UIImage* image){
     NSArray *resources = [PHAssetResource assetResourcesForAsset:phAsset];
     NSString *fileName = (resources.count > 0) ? [(PHAssetResource*)resources.firstObject originalFilename] : nil;
     if(fileName == nil){
-        *fileName = [self getImageFileName:fileType];
+        fileName = [self getImageFileName:fileType];
     }
     //NSLog(@"%i: %@", i, name);
 
